@@ -17,7 +17,7 @@ public class ColumnSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager1.gameOver == false)
+        if (GameManager.gameOver == false)
         {
             time += Time.deltaTime;
             if (time >= maxTime)

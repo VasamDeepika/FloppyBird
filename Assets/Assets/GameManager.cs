@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager1 : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
   
     public static Vector2 bottomLeft;

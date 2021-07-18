@@ -14,8 +14,9 @@ public class BirdMovement : MonoBehaviour
     int maxAngle=20;
     public ScoreManager score;
     bool touchedGround;
-    public GameManager1 gameManager;
+    public GameManager gameManager;
     Animator anim;
+    float timer = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,17 +24,27 @@ public class BirdMovement : MonoBehaviour
         birdRB = GetComponent<Rigidbody2D>();
         score = FindObjectOfType<ScoreManager>();
         anim = GetComponent<Animator>();
+        birdRB.gravityScale = 0;
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && GameManager1.gameOver == false && GameManager1.gameIsPaused == false)
+        timer += Time.deltaTime;
+        if (timer > 3f)
         {
-            birdRB.velocity = Vector2.zero;
-            birdRB.velocity = new Vector2(birdRB.velocity.x, birdSpeed);
+            if (Input.GetMouseButtonDown(0) && GameManager.gameOver == false && GameManager.gameIsPaused == false)
+            {
+                birdRB.velocity = Vector2.zero;
+                birdRB.velocity = new Vector2(birdRB.velocity.x, birdSpeed);
+                birdRB.gravityScale = 1;
+            }
+            BirdRotation();
         }
-        BirdRotation();  
+        else
+        {
+            birdRB.gravityScale = 0;
+        }
     }
 
     void BirdRotation()
@@ -75,7 +86,7 @@ public class BirdMovement : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
-            if(GameManager1.gameOver==false)
+            if(GameManager.gameOver==false)
             {
                 gameManager.GameOver();
                 BirdDied();

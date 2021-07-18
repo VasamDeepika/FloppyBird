@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
-        if(score>highScore)
+        if (score>highScore)
         {
             highScore = score;
             Debug.Log("HighScore: " + highScore);

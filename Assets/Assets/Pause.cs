@@ -14,17 +14,17 @@ public class Pause : MonoBehaviour
     }
     public void OnGamePaused()
     {
-        if(GameManager1.gameIsPaused == false)
+        if(GameManager.gameIsPaused == false)
         {
             Time.timeScale = 0;
             img.sprite = playSprite;
-            GameManager1.gameIsPaused = true;
+            GameManager.gameIsPaused = true;
         }
         else
         {
             Time.timeScale = 1;
             img.sprite = pausedSprite;
-            GameManager1.gameIsPaused = false;
+            GameManager.gameIsPaused = false;
         }
     }
 }

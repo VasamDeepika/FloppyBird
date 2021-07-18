@@ -28,7 +28,7 @@ public class GroundMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager1.gameOver == false)
+        if(GameManager.gameOver == false)
         {
             transform.position = new Vector2(transform.position.x + groundSpeed * Time.deltaTime, transform.position.y);
         }
@@ -42,7 +42,7 @@ public class GroundMovement : MonoBehaviour
         }
         else if (gameObject.CompareTag("Pipe"))
         {
-            if (transform.position.x <= GameManager1.bottomLeft.x - pipeWidth)
+            if (transform.position.x <= GameManager.bottomLeft.x - pipeWidth)
             {
                 Destroy(gameObject);
             }
